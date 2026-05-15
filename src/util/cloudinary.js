@@ -26,4 +26,4 @@ const uplodeOnCloudinary = async (localFilePath) => {
     }
 }
 
-export default uplodeOnCloudinary
+export  {uplodeOnCloudinary}
