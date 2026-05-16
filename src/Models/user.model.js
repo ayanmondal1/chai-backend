@@ -60,7 +60,7 @@ userschema.methods.isPasswordCorrect = async function (password) {
    return await bcrypt.compare(password, this.password)
 }
 
-userschema.methods.generateAccessToken = async function () {
+userschema.methods.generateAccessToken = function () {
    return jsonwebtoken.sign({
     _id: this._id,
     email: this.email,
@@ -74,7 +74,7 @@ userschema.methods.generateAccessToken = async function () {
 )
 }
 
-userschema.methods.generateRefreshToken = async function () {
+userschema.methods.generateRefreshToken = function () {
    return jsonwebtoken.sign({
     _id: this._id,
    },
