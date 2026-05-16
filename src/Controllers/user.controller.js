@@ -220,7 +220,7 @@ const changeCurrentPassword = asyncHandler(async(req, res) => {
 })
 
 const getCurrentUser = asyncHandler(async (req, res) => {
-    return res.status(200).json(200, req.user, "cuurrent user fetched successfully")
+    return res.status(200).json(new ApiResponse(200, req.user, "cuurrent user fetched successfully"))
 })
 
 const updateAccountDetails = asyncHandler(async (req, res) => {
@@ -242,6 +242,8 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
         {new: true}
     ).select("-password")
 
+    
+
     return res.status(200).json(new ApiResponse(200, user, "Account Detail successfully"))
 })
 
@@ -251,6 +253,8 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
     if (!avatarLocalPath) {
         throw new ApiError(400, "Avatar file is messing")
     }
+
+
 
     const avatar = await uplodeOnCloudinary(updateUserAvatar)
 
@@ -296,5 +300,7 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
 
     return res.status(200).json(new ApiResponse(200, user, "cover image updated successfully"))
 })
+
+
 
 export { registerUser, loginUser, logoutUser, refreshAccessToken, changeCurrentPassword, getCurrentUser, updateAccountDetails, updateUserAvatar, updateUserCoverImage}
